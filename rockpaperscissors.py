@@ -9,31 +9,31 @@ def computerwins():
     global cscore,pscore
     cscore+=1
     winner.config(text="computer won")
-    computerscore.config(text="computer score : "+str(csore))
-    playerscore.config(text="player score : "+str(psore))
+    computerscore.config(text="computer score : "+str(cscore))
+    playerscore.config(text="player score : "+str(pscore))
 
 def playerwins():
     global pscore,cscore
     pscore+=1
     winner.config(text="player won")
-    computerscore.config(text="computer score : "+str(csore))
-    playerscore.config(text="player score : "+str(psore))
+    computerscore.config(text="computer score : "+str(cscore))
+    playerscore.config(text="player score : "+str(pscore))
 def tie():
     global pscore,cscore
     winner.config(text="tie")
-    computerscore.config(text="computer score : "+str(csore))
-    playerscore.config(text="player score : "+str(psore))
+    computerscore.config(text="computer score : "+str(cscore))
+    playerscore.config(text="player score : "+str(pscore))
 
 def getcomputerchoice():
     return random.choice(options)
     
-def playerchoice(playerinput):
+def getplayerchoice(playerinput):
     global pscore,cscore
     print(playerinput)
     computerinput=getcomputerchoice()
     print(computerinput)
     playerchoice.config(text="you selected: "+playerinput[0])
-    conputerchoice.config(text="computer selected: "+computerinput[0])
+    computerchoice.config(text="computer selected: "+computerinput[0])
     if playerinput==computerinput:
         tie()
     if playerinput[1]==0:
@@ -60,11 +60,11 @@ winner.place(x=200,y=100)
 
 playeroptions=Label(screen,text="Your options",fg="red")
 playeroptions.place(x=50,y=170)
-rockb=Button(screen,text="Rock",bg="blue",fg="white",width=10,command=lambda:playerchoice(options[0]))
+rockb=Button(screen,text="Rock",bg="blue",fg="white",width=10,command=lambda:getplayerchoice(options[0]))
 rockb.place(x=150,y=200)
-paperb=Button(screen,text="Paper",bg="yellow",fg="black",width=10,command=lambda:playerchoice(options[1]))
+paperb=Button(screen,text="Paper",bg="yellow",fg="black",width=10,command=lambda:getplayerchoice(options[1]))
 paperb.place(x=250,y=200)
-scissorsb=Button(screen,text="Rock",bg="green",fg="white",width=10,command=lambda:playerchoice(options[2]))
+scissorsb=Button(screen,text="Rock",bg="green",fg="white",width=10,command=lambda:getplayerchoice(options[2]))
 scissorsb.place(x=350,y=200)
 
 score=Label(screen,text="score")
