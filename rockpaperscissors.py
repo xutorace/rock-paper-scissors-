@@ -27,6 +27,32 @@ def tie():
 def getcomputerchoice():
     return random.choice(options)
     
+def playerchoice(playerinput):
+    global pscore,cscore
+    print(playerinput)
+    computerinput=getcomputerchoice()
+    print(computerinput)
+    playerchoice.config(text="you selected: "+playerinput[0])
+    conputerchoice.config(text="computer selected: "+computerinput[0])
+    if playerinput==computerinput:
+        tie()
+    if playerinput[1]==0:
+        if computerinput[1]==1:
+            computerwins()
+        elif computerinput[1]==2:
+            playerwins()
+    elif playerinput[1]==1:
+        if computerinput[1]==0:
+            playerwins()
+        elif computerinput[1]==2:
+            computerwins()
+    elif playerinput[1]==2:
+        if computerinput[1]==0:
+            computerwins()
+        elif computerinput[1]==1:
+            playerwins()
+        
+
 title=Label(screen,text="Rock Paper Scissors",font=("Calibri",20))
 title.place(x=150,y=0)
 winner=Label(screen,text="Lets start the game",fg="green")
@@ -34,12 +60,12 @@ winner.place(x=200,y=100)
 
 playeroptions=Label(screen,text="Your options",fg="red")
 playeroptions.place(x=50,y=170)
-rock=Button(screen,text="Rock",bg="blue",fg="white",width=10)
-rock.place(x=150,y=200)
-paper=Button(screen,text="Paper",bg="yellow",fg="black",width=10)
-paper.place(x=250,y=200)
-scissors=Button(screen,text="Rock",bg="green",fg="white",width=10)
-scissors.place(x=350,y=200)
+rockb=Button(screen,text="Rock",bg="blue",fg="white",width=10,command=lambda:playerchoice(options[0]))
+rockb.place(x=150,y=200)
+paperb=Button(screen,text="Paper",bg="yellow",fg="black",width=10,command=lambda:playerchoice(options[1]))
+paperb.place(x=250,y=200)
+scissorsb=Button(screen,text="Rock",bg="green",fg="white",width=10,command=lambda:playerchoice(options[2]))
+scissorsb.place(x=350,y=200)
 
 score=Label(screen,text="score")
 score.place(x=50,y=250)
